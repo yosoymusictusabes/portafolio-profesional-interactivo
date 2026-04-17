@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio profesional interactivo con sistemas CRM y Logistica">
+    <title>Portafolio Profesional | Desarrollador Full Stack</title>
+    <link rel="stylesheet" href="/styles/global.css">
+    <link rel="stylesheet" href="/styles/portfolio.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="nav-brand">
+                    <h1>Portafolio Profesional</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#perfil">Perfil</a></li>
+                    <li><a href="#habilidades">Habilidades</a></li>
+                    <li><a href="#proyectos">Proyectos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="hero-title">Desarrollador Full Stack</h2>
+                <p class="hero-subtitle">Especializado en arquitectura de sistemas empresariales</p>
+                <p class="hero-description">
+                    Construyo sistemas escalables con enfoque en arquitectura por capas,
+                    separacion de responsabilidades y patrones de diseno profesionales.
+                </p>
+                <div class="hero-actions">
+                    <a href="#proyectos" class="btn btn-primary">Ver Proyectos</a>
+                    <a href="#contacto" class="btn btn-secondary">Contactar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Perfil Section -->
+    <section id="perfil" class="section">
+        <div class="container">
+            <h2 class="section-title">Perfil Profesional</h2>
+            <div class="perfil-content">
+                <p>
+                    Desarrollador con experiencia en la construccion de sistemas empresariales complejos.
+                    Mi enfoque se centra en crear arquitecturas escalables que simulan escenarios reales
+                    de negocio, demostrando no solo habilidades de UI, sino comprension profunda de
+                    flujos operativos, gestion de estado y patrones de diseno.
+                </p>
+                <p>
+                    Este portafolio no es una coleccion de paginas estaticas, sino un sistema central
+                    que conecta con aplicaciones completas y funcionales, cada una demostrando
+                    capacidades tecnicas especificas.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Habilidades Section -->
+    <section id="habilidades" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Habilidades Tecnicas</h2>
+            
+            <div class="habilidades-grid">
+                <!-- Frontend -->
+                <div class="habilidad-card">
+                    <h3>Frontend</h3>
+                    <ul>
+                        <li>HTML5, CSS3, JavaScript ES6+</li>
+                        <li>React, Vue, Angular</li>
+                        <li>Responsive Design</li>
+                        <li>Accesibilidad (WCAG)</li>
+                    </ul>
+                </div>
+
+                <!-- Arquitectura -->
+                <div class="habilidad-card">
+                    <h3>Arquitectura</h3>
+                    <ul>
+                        <li>Patron MVC</li>
+                        <li>Separacion por capas</li>
+                        <li>State Management</li>
+                        <li>Router con guardias</li>
+                    </ul>
+                </div>
+
+                <!-- Integracion -->
+                <div class="habilidad-card">
+                    <h3>Integracion</h3>
+                    <ul>
+                        <li>REST APIs</li>
+                        <li>Autenticacion JWT</li>
+                        <li>Control de permisos</li>
+                        <li>Manejo de sesiones</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proyectos Section -->
+    <section id="proyectos" class="section">
+        <div class="container">
+            <h2 class="section-title">Proyectos</h2>
+            <p class="section-subtitle">
+                Sistemas empresariales completos que demuestran arquitectura profesional
+            </p>
+
+            <div class="proyectos-grid">
+                <!-- CRM System -->
+                <div class="proyecto-card">
+                    <div class="proyecto-header">
+                        <h3>CRM System</h3>
+                        <span class="proyecto-tag">Gestion de Usuarios</span>
+                    </div>
+                    <div class="proyecto-body">
+                        <p class="proyecto-descripcion">
+                            Sistema de gestion de relaciones con clientes enfocado en administracion
+                            de usuarios, roles y permisos granulares.
+                        </p>
+                        <div class="proyecto-problema">
+                            <h4>Problema que resuelve:</h4>
+                            <p>
+                                Gestion centralizada de usuarios con control de acceso basado en roles,
+                                permitiendo administrar permisos de forma configurable y escalable.
+                            </p>
+                        </div>
+                        <div class="proyecto-tecnologias">
+                            <h4>Tecnologias:</h4>
+                            <ul>
+                                <li>JavaScript ES6+ (Vanilla)</li>
+                                <li>Arquitectura MVC</li>
+                                <li>localStorage (simulacion)</li>
+                                <li>Sistema de permisos configurable</li>
+                            </ul>
+                        </div>
+                        <div class="proyecto-demuestra">
+                            <h4>Demuestra:</h4>
+                            <ul>
+                                <li>CRUD completo</li>
+                                <li>Control de acceso por roles</li>
+                                <li>Validaciones robustas</li>
+                                <li>Arquitectura escalable</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="proyecto-footer">
+                        <a href="/projects/crm-system/index.html" class="btn btn-primary">Ver Demo</a>
+                        <a href="/projects/crm-system/README.md" class="btn btn-secondary">Documentacion</a>
+                    </div>
+                </div>
+
+                <!-- Logistics System -->
+                <div class="proyecto-card">
+                    <div class="proyecto-header">
+                        <h3>Logistics System</h3>
+                        <span class="proyecto-tag">Flujo Operativo</span>
+                    </div>
+                    <div class="proyecto-body">
+                        <p class="proyecto-descripcion">
+                            Sistema de gestion logistica y ERP enfocado en administracion de productos,
+                            ordenes y flujos operativos empresariales.
+                        </p>
+                        <div class="proyecto-problema">
+                            <h4>Problema que resuelve:</h4>
+                            <p>
+                                Gestion de inventario, procesamiento de ordenes y seguimiento de estados
+                                de envio, simulando un flujo operativo real de logistica.
+                            </p>
+                        </div>
+                        <div class="proyecto-tecnologias">
+                            <h4>Tecnologias:</h4>
+                            <ul>
+                                <li>JavaScript ES6+ (Vanilla)</li>
+                                <li>State Machine Pattern</li>
+                                <li>localStorage (simulacion)</li>
+                                <li>Validacion de reglas de negocio</li>
+                            </ul>
+                        </div>
+                        <div class="proyecto-demuestra">
+                            <h4>Demuestra:</h4>
+                            <ul>
+                                <li>Flujos de negocio complejos</li>
+                                <li>Cambio de estados</li>
+                                <li>Reglas segun rol</li>
+                                <li>Validacion de stock</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="proyecto-footer">
+                        <a href="/projects/logistics-system/index.html" class="btn btn-primary">Ver Demo</a>
+                        <a href="/projects/logistics-system/README.md" class="btn btn-secondary">Documentacion</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section id="contacto" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Contacto</h2>
+            <div class="contacto-content">
+                <p>Interesado en colaborar o conocer mas sobre estos proyectos?</p>
+                <div class="contacto-links">
+                    <a href="https://github.com/yosoymusictusabes" target="_blank" class="btn btn-primary">
+                        GitHub
+                    </a>
+                    <a href="mailto:yosoymusictusabes@gmail.com" class="btn btn-secondary">
+                        Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Portafolio Profesional. Desarrollado como demostracion de capacidades tecnicas.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="/shared/core/app.js"></script>
+</body>
+</html>
