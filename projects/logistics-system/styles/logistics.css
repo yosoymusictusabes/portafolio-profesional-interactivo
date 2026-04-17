@@ -1,0 +1,423 @@
+/**
+ * Estilos del Logistics System
+ */
+
+/* Importar estilos base del CRM */
+@import url('/projects/crm-system/styles/crm.css');
+
+/* Productos Grid */
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+.producto-card {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.producto-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.producto-imagen {
+  width: 100%;
+  height: 180px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-4xl);
+  color: var(--color-text-white);
+}
+
+.producto-body {
+  padding: var(--spacing-lg);
+}
+
+.producto-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: var(--spacing-md);
+}
+
+.producto-nombre {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.producto-precio {
+  font-size: var(--font-size-xl);
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
+.producto-descripcion {
+  color: var(--color-text-light);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-md);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.producto-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.producto-stock {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+}
+
+.stock-disponible {
+  color: var(--color-success);
+}
+
+.stock-agotado {
+  color: var(--color-error);
+}
+
+.producto-categoria {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+}
+
+.producto-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+
+.producto-actions .btn {
+  flex: 1;
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-sm);
+}
+
+/* Ordenes */
+.orden-card {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+.orden-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.orden-numero {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.orden-estado {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.estado-badge {
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.estado-pendiente {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.estado-procesando {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.estado-enviado {
+  background-color: #e0e7ff;
+  color: #4338ca;
+}
+
+.estado-entregado {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.estado-cancelado {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.orden-body {
+  margin-bottom: var(--spacing-md);
+}
+
+.orden-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.orden-info-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.orden-info-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-xs);
+}
+
+.orden-info-value {
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.orden-productos {
+  margin-top: var(--spacing-md);
+}
+
+.orden-productos h4 {
+  font-size: var(--font-size-base);
+  margin-bottom: var(--spacing-sm);
+}
+
+.orden-producto-item {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--spacing-sm);
+  background-color: var(--color-bg-gray);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--spacing-xs);
+}
+
+.orden-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--spacing-md);
+  border-top: 2px solid var(--color-border);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+}
+
+.orden-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: flex-end;
+}
+
+/* Estados Timeline */
+.estados-timeline {
+  position: relative;
+  padding-left: var(--spacing-xl);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: var(--spacing-lg);
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -24px;
+  top: 8px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-border);
+}
+
+.timeline-item.active::before {
+  background-color: var(--color-primary);
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  left: -18px;
+  top: 20px;
+  width: 2px;
+  height: calc(100% - 12px);
+  background-color: var(--color-border);
+}
+
+.timeline-item:last-child::after {
+  display: none;
+}
+
+.timeline-content {
+  background-color: var(--color-bg-gray);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+}
+
+.timeline-title {
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+}
+
+.timeline-date {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+}
+
+/* Estadisticas */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.stat-card {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  text-align: center;
+}
+
+.stat-icon {
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--spacing-md);
+}
+
+.stat-value {
+  font-size: var(--font-size-3xl);
+  font-weight: bold;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.stat-label {
+  color: var(--color-text-light);
+  font-size: var(--font-size-base);
+}
+
+/* Carrito */
+.carrito-container {
+  background-color: var(--color-bg-gray);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+.carrito-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.carrito-items {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.carrito-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md);
+  background-color: var(--color-bg);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-sm);
+}
+
+.carrito-item-info {
+  flex: 1;
+}
+
+.carrito-item-nombre {
+  font-weight: 500;
+  margin-bottom: var(--spacing-xs);
+}
+
+.carrito-item-precio {
+  color: var(--color-text-light);
+  font-size: var(--font-size-sm);
+}
+
+.carrito-item-cantidad {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.carrito-item-cantidad button {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carrito-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--spacing-md);
+  border-top: 2px solid var(--color-border);
+  font-size: var(--font-size-xl);
+  font-weight: bold;
+  margin-top: var(--spacing-md);
+}
+
+.carrito-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+
+.carrito-actions .btn {
+  flex: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .productos-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .orden-info {
+    grid-template-columns: 1fr;
+  }
+  
+  .orden-actions {
+    flex-direction: column;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}

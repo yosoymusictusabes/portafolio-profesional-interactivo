@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logistics System | Gestion de Productos y Ordenes</title>
+    <link rel="stylesheet" href="/styles/global.css">
+    <link rel="stylesheet" href="/projects/logistics-system/styles/logistics.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="container">
+                <div class="header-content">
+                    <h1>Logistics System</h1>
+                    <div class="header-actions">
+                        <span id="user-info"></span>
+                        <button id="btn-logout" class="btn btn-secondary">Cerrar Sesion</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="app-nav">
+            <div class="container">
+                <ul class="nav-tabs">
+                    <li><a href="#productos" class="nav-tab active" data-tab="productos">Productos</a></li>
+                    <li><a href="#ordenes" class="nav-tab" data-tab="ordenes">Ordenes</a></li>
+                    <li><a href="#estadisticas" class="nav-tab" data-tab="estadisticas">Estadisticas</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="app-main">
+            <div class="container">
+                <!-- Tab: Productos -->
+                <div id="tab-productos" class="tab-content active">
+                    <div class="content-header">
+                        <h2>Gestion de Productos</h2>
+                        <button id="btn-crear-producto" class="btn btn-primary">
+                            + Nuevo Producto
+                        </button>
+                    </div>
+
+                    <div class="content-body">
+                        <!-- Filtros -->
+                        <div class="filters">
+                            <input 
+                                type="text" 
+                                id="input-buscar-producto" 
+                                class="form-control" 
+                                placeholder="Buscar por nombre o categoria..."
+                            >
+                            <select id="select-categoria" class="form-control">
+                                <option value="">Todas las categorias</option>
+                                <option value="Electronica">Electronica</option>
+                                <option value="Accesorios">Accesorios</option>
+                                <option value="Monitores">Monitores</option>
+                            </select>
+                            <select id="select-stock" class="form-control">
+                                <option value="">Todo el stock</option>
+                                <option value="disponible">Con stock</option>
+                                <option value="agotado">Sin stock</option>
+                            </select>
+                        </div>
+
+                        <!-- Grid de productos -->
+                        <div id="productos-grid"></div>
+                    </div>
+                </div>
+
+                <!-- Tab: Ordenes -->
+                <div id="tab-ordenes" class="tab-content">
+                    <div class="content-header">
+                        <h2>Gestion de Ordenes</h2>
+                        <button id="btn-crear-orden" class="btn btn-primary">
+                            + Nueva Orden
+                        </button>
+                    </div>
+
+                    <div class="content-body">
+                        <!-- Filtros -->
+                        <div class="filters">
+                            <input 
+                                type="text" 
+                                id="input-buscar-orden" 
+                                class="form-control" 
+                                placeholder="Buscar por numero de orden..."
+                            >
+                            <select id="select-estado" class="form-control">
+                                <option value="">Todos los estados</option>
+                                <option value="pendiente">Pendiente</option>
+                                <option value="procesando">Procesando</option>
+                                <option value="enviado">Enviado</option>
+                                <option value="entregado">Entregado</option>
+                                <option value="cancelado">Cancelado</option>
+                            </select>
+                        </div>
+
+                        <!-- Tabla de ordenes -->
+                        <div id="ordenes-container"></div>
+                    </div>
+                </div>
+
+                <!-- Tab: Estadisticas -->
+                <div id="tab-estadisticas" class="tab-content">
+                    <div class="content-header">
+                        <h2>Estadisticas del Sistema</h2>
+                    </div>
+
+                    <div class="content-body">
+                        <div id="estadisticas-container"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/shared/core/app.js"></script>
+    <script type="module" src="/projects/logistics-system/modules/productos/productos.controller.js"></script>
+    <script type="module" src="/projects/logistics-system/modules/ordenes/ordenes.controller.js"></script>
+    <script type="module" src="/projects/logistics-system/modules/estados/estados.controller.js"></script>
+    <script type="module">
+        import { app } from '/shared/core/app.js';
+        import { ProductosController } from '/projects/logistics-system/modules/productos/productos.controller.js';
+        import { OrdenesController } from '/projects/logistics-system/modules/ordenes/ordenes.controller.js';
+        import { EstadisticasController } from '/projects/logistics-system/modules/estados/estadisticas.controller.js';
+        
+        // Inicializar aplicacion
+        app.inicializar().then(() => {
+            // Verificar autenticacion
+            if (!app.obtenerAuthService().validarSesion()) {
+                window.location.href = '/login.html';
+                return;
+            }
+
+            // Inicializar controladores
+            const productosController = new ProductosController();
+            const ordenesController = new OrdenesController();
+            const estadisticasController = new EstadisticasController();
+            
+            productosController.inicializar();
+
+            // Manejar tabs
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const tabName = tab.dataset.tab;
+                    
+                    // Actualizar tabs activos
+                    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                    
+                    tab.classList.add('active');
+                    document.getElementById(`tab-${tabName}`).classList.add('active');
+                    
+                    // Inicializar controlador segun tab
+                    if (tabName === 'ordenes') {
+                        ordenesController.inicializar();
+                    } else if (tabName === 'estadisticas') {
+                        estadisticasController.inicializar();
+                    }
+                });
+            });
+
+            // Logout
+            document.getElementById('btn-logout').addEventListener('click', () => {
+                app.obtenerAuthService().logout();
+            });
+
+            // Mostrar info de usuario
+            const usuario = app.obtenerAuthService().obtenerUsuarioActual();
+            document.getElementById('user-info').textContent = `${usuario.nombre} (${usuario.rol})`;
+        });
+    </script>
+</body>
+</html>
