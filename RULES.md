@@ -96,7 +96,7 @@ NO usar abreviaturas:
 
 ## Excepciones
 
-Los siguientes nombres pueden mantener su formato original cuando son requeridos por el framework:
+Los siguientes nombres pueden mantener su formato original cuando son requeridos por el framework (Equivalentes en el lenguaje, plataforma o framework respectivo):
 - `Controller` (ASP.NET Core)
 - `Program`
 - `Startup`

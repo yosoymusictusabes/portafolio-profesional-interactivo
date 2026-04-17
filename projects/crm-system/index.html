@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM System | Gestion de Usuarios</title>
+    <link rel="stylesheet" href="/styles/global.css">
+    <link rel="stylesheet" href="/projects/crm-system/styles/crm.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="container">
+                <div class="header-content">
+                    <h1>CRM System</h1>
+                    <div class="header-actions">
+                        <span id="user-info"></span>
+                        <button id="btn-logout" class="btn btn-secondary">Cerrar Sesion</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="app-nav">
+            <div class="container">
+                <ul class="nav-tabs">
+                    <li><a href="#usuarios" class="nav-tab active" data-tab="usuarios">Usuarios</a></li>
+                    <li><a href="#roles" class="nav-tab" data-tab="roles">Roles</a></li>
+                    <li><a href="#perfil" class="nav-tab" data-tab="perfil">Mi Perfil</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="app-main">
+            <div class="container">
+                <!-- Tab: Usuarios -->
+                <div id="tab-usuarios" class="tab-content active">
+                    <div class="content-header">
+                        <h2>Gestion de Usuarios</h2>
+                        <button id="btn-crear-usuario" class="btn btn-primary">
+                            + Nuevo Usuario
+                        </button>
+                    </div>
+
+                    <div class="content-body">
+                        <!-- Filtros -->
+                        <div class="filters">
+                            <input 
+                                type="text" 
+                                id="input-buscar" 
+                                class="form-control" 
+                                placeholder="Buscar por nombre, email o usuario..."
+                            >
+                            <select id="select-rol" class="form-control">
+                                <option value="">Todos los roles</option>
+                                <option value="admin">Admin</option>
+                                <option value="cliente">Cliente</option>
+                                <option value="publico">Publico</option>
+                            </select>
+                        </div>
+
+                        <!-- Tabla de usuarios -->
+                        <div id="tabla-usuarios-container"></div>
+                    </div>
+                </div>
+
+                <!-- Tab: Roles -->
+                <div id="tab-roles" class="tab-content">
+                    <div class="content-header">
+                        <h2>Gestion de Roles</h2>
+                    </div>
+
+                    <div class="content-body">
+                        <div id="roles-container"></div>
+                    </div>
+                </div>
+
+                <!-- Tab: Perfil -->
+                <div id="tab-perfil" class="tab-content">
+                    <div class="content-header">
+                        <h2>Mi Perfil</h2>
+                    </div>
+
+                    <div class="content-body">
+                        <div id="perfil-container"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/shared/core/app.js"></script>
+    <script type="module" src="/projects/crm-system/modules/usuarios/usuarios.controller.js"></script>
+    <script type="module">
+        import { app } from '/shared/core/app.js';
+        import { UsuariosController } from '/projects/crm-system/modules/usuarios/usuarios.controller.js';
+        
+        // Inicializar aplicacion
+        app.inicializar().then(() => {
+            // Verificar autenticacion
+            if (!app.obtenerAuthService().validarSesion()) {
+                window.location.href = '/login.html';
+                return;
+            }
+
+            // Inicializar controlador de usuarios
+            const usuariosController = new UsuariosController();
+            usuariosController.inicializar();
+
+            // Manejar tabs
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const tabName = tab.dataset.tab;
+                    
+                    // Actualizar tabs activos
+                    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                    
+                    tab.classList.add('active');
+                    document.getElementById(`tab-${tabName}`).classList.add('active');
+                });
+            });
+
+            // Logout
+            document.getElementById('btn-logout').addEventListener('click', () => {
+                app.obtenerAuthService().logout();
+            });
+
+            // Mostrar info de usuario
+            const usuario = app.obtenerAuthService().obtenerUsuarioActual();
+            document.getElementById('user-info').textContent = `${usuario.nombre} (${usuario.rol})`;
+        });
+    </script>
+</body>
+</html>
