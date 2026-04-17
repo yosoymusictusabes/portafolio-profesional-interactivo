@@ -247,7 +247,11 @@ export class ApiMock {
    * Inicializar datos de prueba
    */
   inicializarDatosPrueba() {
-    // Este metodo puede ser usado para cargar datos iniciales
+    // Cargar datos iniciales si no existen
+    import('/shared/utils/datos-iniciales.js').then(module => {
+      module.cargarDatosIniciales();
+    });
+    
     console.log('API Mock inicializada');
   }
 }

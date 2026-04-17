@@ -95,9 +95,13 @@
     <!-- Scripts -->
     <script type="module" src="/shared/core/app.js"></script>
     <script type="module" src="/projects/crm-system/modules/usuarios/usuarios.controller.js"></script>
+    <script type="module" src="/projects/crm-system/modules/roles/roles.controller.js"></script>
+    <script type="module" src="/projects/crm-system/modules/perfil/perfil.controller.js"></script>
     <script type="module">
         import { app } from '/shared/core/app.js';
         import { UsuariosController } from '/projects/crm-system/modules/usuarios/usuarios.controller.js';
+        import { RolesController } from '/projects/crm-system/modules/roles/roles.controller.js';
+        import { PerfilController } from '/projects/crm-system/modules/perfil/perfil.controller.js';
         
         // Inicializar aplicacion
         app.inicializar().then(() => {
@@ -107,8 +111,11 @@
                 return;
             }
 
-            // Inicializar controlador de usuarios
+            // Inicializar controladores
             const usuariosController = new UsuariosController();
+            const rolesController = new RolesController();
+            const perfilController = new PerfilController();
+            
             usuariosController.inicializar();
 
             // Manejar tabs
@@ -123,6 +130,13 @@
                     
                     tab.classList.add('active');
                     document.getElementById(`tab-${tabName}`).classList.add('active');
+                    
+                    // Inicializar controlador según tab
+                    if (tabName === 'roles') {
+                        rolesController.inicializar();
+                    } else if (tabName === 'perfil') {
+                        perfilController.inicializar();
+                    }
                 });
             });
 
