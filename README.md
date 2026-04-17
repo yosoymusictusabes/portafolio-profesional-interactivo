@@ -1,6 +1,6 @@
 # Portafolio Profesional Interactivo
 
-Sistema de portafolio profesional que demuestra capacidades de desarrollo mediante aplicaciones empresariales completas y funcionales.
+Bienvenido a mi Sistema de portafolio profesional que demuestra capacidades de desarrollo mediante aplicaciones empresariales completas y funcionales.
 
 ## 🎯 Concepto
 
