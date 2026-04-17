@@ -1,0 +1,19 @@
+// Archivo de setup para Jest
+// Renombrar a jest.setup.js si lo necesitas
+
+// DESCOMENTAR para React Testing Library:
+// import '@testing-library/jest-dom';
+
+// DESCOMENTAR para configuraciones globales:
+// global.fetch = require('jest-fetch-mock');
+
+// DESCOMENTAR para mocks globales:
+// jest.mock('./src/utils/api');
+
+// Configuración de timeout global
+jest.setTimeout(10000);
+
+// DESCOMENTAR para limpiar mocks después de cada test:
+// afterEach(() => {
+//   jest.clearAllMocks();
+// });

@@ -1,0 +1,38 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "current"
+        }
+      }
+    ]
+    // DESCOMENTAR para React:
+    // "@babel/preset-react"
+    
+    // DESCOMENTAR para TypeScript:
+    // "@babel/preset-typescript"
+  ],
+  "plugins": [
+    // AGREGAR plugins según necesites:
+    // "@babel/plugin-proposal-class-properties",
+    // "@babel/plugin-transform-runtime"
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "targets": {
+              "node": "current"
+            }
+          }
+        ]
+        // DESCOMENTAR para React:
+        // "@babel/preset-react"
+      ]
+    }
+  }
+}

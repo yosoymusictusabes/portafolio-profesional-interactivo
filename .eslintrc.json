@@ -1,0 +1,84 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": [
+    "eslint:recommended"
+    // DESCOMENTAR según tu proyecto:
+    // "plugin:react/recommended",
+    // "plugin:react-hooks/recommended",
+    // "plugin:@typescript-eslint/recommended",
+    // "plugin:vue/vue3-recommended",
+    // "plugin:@angular-eslint/recommended",
+    // "next/core-web-vitals",
+    // "plugin:prettier/recommended"
+  ],
+  "parser": "@babel/eslint-parser",
+  // CAMBIAR a "@typescript-eslint/parser" si usas TypeScript
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+      // Cambiar a false si no usas React/JSX
+    },
+    "requireConfigFile": false,
+    "babelOptions": {
+      "presets": ["@babel/preset-react"]
+      // Ajustar según tu proyecto
+    }
+  },
+  "plugins": [
+    // DESCOMENTAR según tu proyecto:
+    // "react",
+    // "react-hooks",
+    // "@typescript-eslint",
+    // "vue",
+    // "@angular-eslint",
+    // "prettier"
+  ],
+  "rules": {
+    // Reglas generales
+    "no-console": "warn",
+    "no-unused-vars": "warn",
+    "no-undef": "error",
+    "semi": ["error", "always"],
+    "quotes": ["error", "single"],
+    "indent": ["error", 2],
+    "comma-dangle": ["error", "never"],
+    "no-multiple-empty-lines": ["error", { "max": 1 }],
+    "eol-last": ["error", "always"],
+    "no-trailing-spaces": "error",
+    
+    // DESCOMENTAR para React:
+    // "react/react-in-jsx-scope": "off",
+    // "react/prop-types": "off",
+    // "react-hooks/rules-of-hooks": "error",
+    // "react-hooks/exhaustive-deps": "warn",
+    
+    // DESCOMENTAR para TypeScript:
+    // "@typescript-eslint/no-unused-vars": "warn",
+    // "@typescript-eslint/explicit-module-boundary-types": "off",
+    // "@typescript-eslint/no-explicit-any": "warn"
+  },
+  "settings": {
+    // DESCOMENTAR para React:
+    // "react": {
+    //   "version": "detect"
+    // }
+  },
+  "ignorePatterns": [
+    "node_modules/",
+    "dist/",
+    "build/",
+    "coverage/",
+    ".next/",
+    ".nuxt/",
+    "out/",
+    "*.config.js",
+    "*.config.ts"
+  ]
+}
